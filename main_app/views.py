@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 # from django.contrib.auth import login
@@ -29,11 +30,14 @@ class ArtUpdate(UpdateView):
     model = Art
     fields = ['title', 'image', 'description', 'price', 'style', 'medium']
 
+# class ArtDelete(DeleteView):
+#     model = Art
+#     success_url = '/art'
+
 class ArtDelete(DeleteView):
     model = Art
-    success_url= '/art'
-# FIXME: we need to update the xxxDeletes
-
+    success_url = reverse_lazy('/art')
+    
 # Model 2: Style
 class StyleList(ListView):
     model = Style
@@ -47,7 +51,7 @@ class StyleUpdate(UpdateView):
 
 class StyleDelete(DeleteView):
     model = Style
-    fields = '__all__'
+    success_url = '/style'
 
 # Model 3: Medium
 class MediumList(ListView):
@@ -62,7 +66,7 @@ class MediumUpdate(UpdateView):
 
 class MediumDelete(DeleteView):
     model = Medium
-    fields = '__all__'
+    success_url = '/medium'
 
 # Model 4: Comment
 class CommentList(ListView):
@@ -81,6 +85,6 @@ class CommentUpdate(UpdateView):
 
 class CommentDelete(DeleteView):
     model = Comment
-    fields = '__all__'
+    success_url = '/comment'
 
 # let's go team
