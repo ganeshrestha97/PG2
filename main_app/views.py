@@ -36,7 +36,7 @@ class ArtUpdate(UpdateView):
 
 class ArtDelete(DeleteView):
     model = Art
-    success_url = reverse_lazy('/art')
+    success_url = reverse_lazy('index')
     
 # Model 2: Style
 class StyleList(ListView):
@@ -51,7 +51,9 @@ class StyleUpdate(UpdateView):
 
 class StyleDelete(DeleteView):
     model = Style
-    success_url = '/style'
+    # success_url = '/style'
+    success_url = reverse_lazy('styles_index')
+
 
 # Model 3: Medium
 class MediumList(ListView):
@@ -66,7 +68,8 @@ class MediumUpdate(UpdateView):
 
 class MediumDelete(DeleteView):
     model = Medium
-    success_url = '/medium'
+    # success_url = '/medium'
+    success_url = reverse_lazy('mediums_index')
 
 # Model 4: Comment
 class CommentList(ListView):
@@ -85,6 +88,7 @@ class CommentUpdate(UpdateView):
 
 class CommentDelete(DeleteView):
     model = Comment
-    success_url = '/comment'
+    # success_url = '/comment'
+    success_url = reverse_lazy('comments_index')
 
 # let's go team
