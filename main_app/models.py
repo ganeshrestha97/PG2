@@ -106,7 +106,3 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ['-date']
-
-
-    
-
